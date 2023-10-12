@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import modelDominio.Usuario;
 import modelDominio.Venda;
+import modelDominio.Vendedor;
 
 public class ConexaoController {
     private ObjectOutputStream out;
@@ -24,6 +25,11 @@ public class ConexaoController {
         
         try {
             out.writeObject("ListaVendas");
+            String msg = (String)in.readObject();
+            
+            Vendedor vendedor = new Vendedor(this.usuario.getCodUsuario());
+            out.writeObject(vendedor);
+            
             listaVendas = (ArrayList<Venda>)in.readObject();  
         } catch (IOException ioe) {
             ioe.printStackTrace();

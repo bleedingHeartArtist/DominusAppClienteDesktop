@@ -10,6 +10,11 @@ public class Cliente extends Usuario implements Serializable{
     public String toString() {
         return super.toString()+"Cliente ("+')';
     }
+
+    public Cliente(String cpf, int codUsuario, String nome) {
+        super(codUsuario, nome);
+        this.cpf = cpf;
+    }
     
     public Cliente(String nome, String login, String senha, String endereco) {
         super(nome, login, senha, endereco);
@@ -23,8 +28,8 @@ public class Cliente extends Usuario implements Serializable{
         super(login, senha);
     }
 
-    public Cliente(String cpf, int codUsuario) {
-        super(codUsuario);
+    public Cliente(String cpf, int codUsuario, String nome, String login, String senha, String endereco) {
+        super(codUsuario, nome, login, senha, endereco);
         this.cpf = cpf;
     }
 
@@ -35,8 +40,4 @@ public class Cliente extends Usuario implements Serializable{
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
-    
-    
-    
 }

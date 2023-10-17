@@ -30,6 +30,12 @@ public class FormLogin extends javax.swing.JFrame {
         jlAviso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jlImagem.setText("Imagem LOGO");
 
@@ -143,7 +149,6 @@ public class FormLogin extends javax.swing.JFrame {
         jlAvisoLogin.setVisible(false);
         jlAvisoSenha.setVisible(false);
         
-        
         String senha = jpfSenha.getText();
         Usuario usuario = new Usuario(jtfLogin.getText(), senha);
         Usuario usuarioLogado = DominusAppCliente.conexaoController.efetuarLogin(usuario);
@@ -153,15 +158,22 @@ public class FormLogin extends javax.swing.JFrame {
             DominusAppCliente.conexaoController.setUsuario(usuarioLogado);
             FormPrincipal formPrincipal = new FormPrincipal();
             formPrincipal.setVisible(true);
+            dispose();
         } else {
             jlAviso.setVisible(true);
-        }
-        
+        }  
     }//GEN-LAST:event_jbEntrarActionPerformed
 
     private void jbCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastroActionPerformed
         // TODO add your handling code here:
+        FormCadastroUsuario formCadastroUsuario = new FormCadastroUsuario();
+        formCadastroUsuario.setVisible(true);
     }//GEN-LAST:event_jbCadastroActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        DominusAppCliente.conexaoController.fim();
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

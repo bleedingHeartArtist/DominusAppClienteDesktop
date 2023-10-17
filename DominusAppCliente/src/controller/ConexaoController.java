@@ -61,6 +61,23 @@ public class ConexaoController {
         return usuarioLogado;
     }
     
+    //------------CADASTRO DE USUARIO----------//
+    
+    public boolean vendedorInserir(Vendedor vendedor) {
+        boolean resultado;
+        
+        try {
+            out.writeObject("VendedorInserir");
+            String msg = (String)in.readObject();
+            out.writeObject(vendedor);
+            resultado = (boolean) in.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+            resultado = false;
+        }
+        return resultado;
+    }
+    
     public void fim() {
         try {
             out.writeObject("fim");

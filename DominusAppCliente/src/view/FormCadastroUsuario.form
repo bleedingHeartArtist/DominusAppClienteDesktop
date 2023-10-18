@@ -29,28 +29,40 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jlSenha" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jpfSenha" pref="175" max="32767" attributes="0"/>
-                          <Component id="jlEndereco" min="-2" max="-2" attributes="0"/>
-                          <Component id="jlLogin" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtfNome" max="32767" attributes="0"/>
-                          <Component id="jlNome" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtfLogin" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jtfEndereco" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jcbTipo" pref="158" max="32767" attributes="0"/>
-                          <Component id="jlCpf" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtfCpf" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jlCnpj" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtfCnpj" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jlTipo" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jlEndereco" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jlAvisoEndereco" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jlLogin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jlAvisoLogin" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jtfNome" pref="175" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jlNome" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jlAvisoNome" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jtfLogin" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jtfEndereco" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jlCnpj" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jlAvisoCnpj" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jtfCnpj" alignment="0" pref="158" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jlSenha" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jlAvisoSenha" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jpfSenha" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -68,44 +80,55 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jlNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jlNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlAvisoNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jtfNome" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jlCnpj" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlAvisoCnpj" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jtfCnpj" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jtfNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcbTipo" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jlLogin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlCpf" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jtfLogin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfCpf" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jlLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlAvisoLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jtfLogin" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jlSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlAvisoSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jpfSenha" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jlEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlCnpj" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jlAvisoEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jtfEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfCnpj" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Component id="jlSenha" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jpfSenha" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="jtfEndereco" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               <Component id="jbCadastrar" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jbLimpar" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <EmptySpace pref="58" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -127,31 +150,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlEndereco">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Endereco"/>
+        <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfEndereco">
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jcbTipo">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="&lt;&lt;Selecionar&gt;&gt;"/>
-            <StringItem index="1" value="Cliente"/>
-            <StringItem index="2" value="Vendedor"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jlCpf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="CPF"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jtfCpf">
     </Component>
     <Component class="javax.swing.JLabel" name="jlCnpj">
       <Properties>
@@ -192,9 +194,59 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbLimparActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlTipo">
+    <Component class="javax.swing.JLabel" name="jlAvisoNome">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tipo"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="10" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Informe o nome!"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlAvisoLogin">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="10" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Informe o login!"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlAvisoEndereco">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="10" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Informe o endere&#xe7;o!"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlAvisoCnpj">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="10" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Informe o CNPJ!"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlAvisoSenha">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="10" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Informe a senha!"/>
       </Properties>
     </Component>
   </SubComponents>

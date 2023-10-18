@@ -8,12 +8,13 @@ import view.util.VendaTableModel;
 
 public class FormPrincipal extends javax.swing.JFrame {
     Timer timerAtualizaTabela;
+    VendaTableModel vendaModel;
 
     public void atualizaTabelaVendas () {
         ArrayList<Venda> listaVendas = DominusAppCliente.conexaoController.listaVendas();
         
         if (listaVendas.get(0) != null) {
-            VendaTableModel vendaModel = new VendaTableModel(listaVendas);
+            vendaModel = new VendaTableModel(listaVendas);
             jtVendas.setModel(vendaModel);
         } 
     }
@@ -72,6 +73,11 @@ public class FormPrincipal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        jtVendas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtVendasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtVendas);
 
         javax.swing.GroupLayout jpVendasLayout = new javax.swing.GroupLayout(jpVendas);
@@ -210,6 +216,11 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         DominusAppCliente.conexaoController.fim();
     }//GEN-LAST:event_formWindowClosing
+
+    private void jtVendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtVendasMouseClicked
+        //TODO
+        Venda vendaSelecionada = vendaModel.getVenda(jtVendas.getSelectedRow());
+    }//GEN-LAST:event_jtVendasMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

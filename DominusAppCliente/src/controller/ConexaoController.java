@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import modelDominio.Produto;
 import modelDominio.Usuario;
 import modelDominio.Venda;
 import modelDominio.Vendedor;
@@ -76,6 +77,29 @@ public class ConexaoController {
             resultado = false;
         }
         return resultado;
+    }
+    
+    //----------------PRODUTO-------------------//
+    
+    public ArrayList<Produto> listaProdutos(){
+        ArrayList<Produto> listaProdutos;
+        
+        try {
+            out.writeObject("ListaProdutos");
+            String msg = (String)in.readObject();
+            
+            Vendedor vendedor = new Vendedor(this.usuario.getCodUsuario());
+            out.writeObject(vendedor);
+            
+            listaProdutos = (ArrayList<Produto>) in.readObject();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            listaProdutos = null;
+        } catch (ClassNotFoundException cne) {
+            cne.printStackTrace();
+            listaProdutos = null;
+        }
+        return listaProdutos;
     }
     
     public void fim() {

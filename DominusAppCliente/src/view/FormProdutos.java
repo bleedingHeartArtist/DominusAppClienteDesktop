@@ -2,12 +2,24 @@ package view;
 
 import java.util.ArrayList;
 import modelDominio.Produto;
+import view.util.ProdutoTableModel;
 
 public class FormProdutos extends javax.swing.JFrame {
-    //ProdutoTableModel produtoTableModel;
+    ProdutoTableModel produtoTableModel;
     
-    public FormProdutos(Produto bk) {
-        //initComponents();
+    public void atualizaTabelaProdutos() {
+        ArrayList<Produto> listaProdutos = DominusAppCliente.conexaoController.listaProdutos();
+        
+        if (listaProdutos != null) {
+            produtoTableModel = new ProdutoTableModel(listaProdutos);
+            jtMeusProdutos.setModel(produtoTableModel);
+        }
+    }
+    
+    public FormProdutos() {
+        initComponents();
+        
+        atualizaTabelaProdutos();
         /*jtfCodProduto.setText(String.valueOf(bk.getCodProduto()));
         jtfDescricao.setText(bk.getDescricao());
         jtfDptoCadastro.setText(bk.getDepartamentoNome());
@@ -73,7 +85,8 @@ public class FormProdutos extends javax.swing.JFrame {
 
         jLabel7.setText("Departamento:");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Produtos");
 
         jtMeusProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -420,6 +433,7 @@ public class FormProdutos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtfMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfMarcaActionPerformed

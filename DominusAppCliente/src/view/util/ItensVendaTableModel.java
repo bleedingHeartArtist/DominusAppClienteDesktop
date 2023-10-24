@@ -18,7 +18,7 @@ public class ItensVendaTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -27,7 +27,8 @@ public class ItensVendaTableModel extends AbstractTableModel {
         
         switch (columnIndex) {
             case 0: return itemVendaSelecionado.getProduto().getNome();
-            case 1: return itemVendaSelecionado.getValorTotal();
+            case 1: return itemVendaSelecionado.getValorUnitario();
+            case 2: return itemVendaSelecionado.getQuantidade();
             default: return "";
         }
     }
@@ -37,7 +38,8 @@ public class ItensVendaTableModel extends AbstractTableModel {
         switch (column) {
             case 0: return "Produto";
             case 1: return "Preço";
-            default: return "";
+            case 2: return "Quantidade";
+            default: return "NoName";
         }
     }
     

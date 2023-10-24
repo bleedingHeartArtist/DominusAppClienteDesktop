@@ -115,13 +115,13 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jtItensVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2"
+                "Title 1", "Title 2", "Title 3"
             }
         ));
         jScrollPane2.setViewportView(jtItensVenda);
@@ -175,6 +175,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         );
 
         jbProdutos.setText("Produtos");
+        jbProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbProdutosActionPerformed(evt);
+            }
+        });
 
         jbMinhaLoja.setText("Minha loja");
 
@@ -238,6 +243,12 @@ public class FormPrincipal extends javax.swing.JFrame {
         jtfValorTotal.setText(vendaSelecionada.getValorString());
         
     }//GEN-LAST:event_jtVendasMouseClicked
+
+    private void jbProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbProdutosActionPerformed
+        // TODO add your handling code here:
+        FormProdutos formProdutos = new FormProdutos();
+        formProdutos.setVisible(true);
+    }//GEN-LAST:event_jbProdutosActionPerformed
 
     public void limpaCampos() {
         jtfCodigoVenda.setText("");

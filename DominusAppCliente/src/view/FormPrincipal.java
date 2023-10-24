@@ -3,12 +3,15 @@ package view;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import modelDominio.ItensVenda;
 import modelDominio.Venda;
+import view.util.ItensVendaTableModel;
 import view.util.VendaTableModel;
 
 public class FormPrincipal extends javax.swing.JFrame {
     Timer timerAtualizaTabela;
     VendaTableModel vendaModel;
+    ItensVendaTableModel itensVendaModel;
 
     public void atualizaTabelaVendas () {
         ArrayList<Venda> listaVendas = DominusAppCliente.conexaoController.listaVendas();
@@ -17,6 +20,15 @@ public class FormPrincipal extends javax.swing.JFrame {
             vendaModel = new VendaTableModel(listaVendas);
             jtVendas.setModel(vendaModel);
         } 
+    }
+    
+    public void atualizaTabelaItensVenda(Venda vendaSelecionada) {
+        ArrayList<ItensVenda> listaItensVenda = vendaSelecionada.getItens();
+        
+        if (listaItensVenda.get(0) != null) {
+            itensVendaModel = new ItensVendaTableModel(listaItensVenda);
+            jtItensVenda.setModel(itensVendaModel);
+        }
     }
             
     public FormPrincipal() {
@@ -220,8 +232,19 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void jtVendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtVendasMouseClicked
         //TODO
         Venda vendaSelecionada = vendaModel.getVenda(jtVendas.getSelectedRow());
+        jtfCodigoVenda.setText(String.valueOf(vendaSelecionada.getCodVenda()));
+        jtfCliente.setText(vendaSelecionada.getCliente().getNome());
+        atualizaTabelaItensVenda(vendaSelecionada);
+        jtfValorTotal.setText(vendaSelecionada.getValorString());
+        
     }//GEN-LAST:event_jtVendasMouseClicked
 
+    public void limpaCampos() {
+        jtfCodigoVenda.setText("");
+        jtfCliente.setText("");
+        jtfValorTotal.setText("");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

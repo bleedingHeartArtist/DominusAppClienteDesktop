@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import modelDominio.Produto;
 
 public class FormProdutos extends javax.swing.JFrame {
+    //ProdutoTableModel produtoTableModel;
+    
     public FormProdutos(Produto bk) {
         //initComponents();
         /*jtfCodProduto.setText(String.valueOf(bk.getCodProduto()));

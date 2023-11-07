@@ -63,7 +63,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jtfValorTotal = new javax.swing.JTextField();
         jlValorTotal = new javax.swing.JLabel();
         jbProdutos = new javax.swing.JButton();
-        jbMinhaLoja = new javax.swing.JButton();
+        jbMarcas = new javax.swing.JButton();
         jbClientes = new javax.swing.JButton();
         jlCabecalhoVendas = new javax.swing.JLabel();
 
@@ -111,7 +111,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jLabel1.setText("Cliente");
 
-        jtfCliente.setEnabled(false);
+        jtfCliente.setEditable(false);
 
         jtItensVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,11 +126,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jtItensVenda);
 
-        jtfCodigoVenda.setEnabled(false);
+        jtfCodigoVenda.setEditable(false);
 
         jlItensVenda.setText("Itens");
 
-        jtfValorTotal.setEnabled(false);
+        jtfValorTotal.setEditable(false);
 
         jlValorTotal.setText("Valor total");
 
@@ -181,7 +181,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbMinhaLoja.setText("Minha loja");
+        jbMarcas.setText("Marcas");
 
         jbClientes.setText("Clientes");
 
@@ -198,7 +198,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbProdutos)
                         .addGap(33, 33, 33)
-                        .addComponent(jbMinhaLoja)
+                        .addComponent(jbMarcas)
                         .addGap(28, 28, 28)
                         .addComponent(jbClientes)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -214,7 +214,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jbProdutos)
-                            .addComponent(jbMinhaLoja)
+                            .addComponent(jbMarcas)
                             .addComponent(jbClientes)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
@@ -261,7 +261,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbClientes;
-    private javax.swing.JButton jbMinhaLoja;
+    private javax.swing.JButton jbMarcas;
     private javax.swing.JButton jbProdutos;
     private javax.swing.JLabel jlCabecalhoVendas;
     private javax.swing.JLabel jlCodigoVenda;

@@ -33,7 +33,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jbProdutos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="jbMinhaLoja" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbMarcas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="jbClientes" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -54,7 +54,7 @@
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jbProdutos" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jbMinhaLoja" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbMarcas" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jbClientes" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -182,7 +182,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtfCliente">
           <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -207,7 +207,7 @@
         </Container>
         <Component class="javax.swing.JTextField" name="jtfCodigoVenda">
           <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jlItensVenda">
@@ -217,7 +217,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtfValorTotal">
           <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jlValorTotal">
@@ -235,9 +235,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbProdutosActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jbMinhaLoja">
+    <Component class="javax.swing.JButton" name="jbMarcas">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Minha loja"/>
+        <Property name="text" type="java.lang.String" value="Marcas"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jbClientes">

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import modelDominio.Departamento;
+import modelDominio.Marca;
 import modelDominio.Produto;
 import modelDominio.Usuario;
 import modelDominio.Venda;
@@ -100,6 +102,60 @@ public class ConexaoController {
             listaProdutos = null;
         }
         return listaProdutos;
+    }
+    
+    public boolean produtoInserir(Produto produto) {
+        boolean resultado;
+            
+        try {
+            out.writeObject("ProdutoInserir");
+            String msg = (String)in.readObject();
+            out.writeObject(produto);
+            resultado = (boolean)in.readObject();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            resultado = false;
+        } catch (ClassNotFoundException cne) {
+            cne.printStackTrace();
+            resultado = false;
+        }
+        return resultado;
+    }
+    
+    //------------MARCA---------------//
+    
+    public ArrayList<Marca> listaMarcas() {
+        ArrayList<Marca> listaMarcas;
+        
+        try {
+            out.writeObject("ListaMarcas");
+            listaMarcas = (ArrayList<Marca>) in.readObject();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            listaMarcas = null;
+        } catch(ClassNotFoundException cne) {
+            cne.printStackTrace();
+            listaMarcas = null;
+        }
+        return listaMarcas;
+    }
+    
+    //---------------DEPARTAMENTO-------------//
+    
+    public ArrayList<Departamento> listaDepartamentos() {
+        ArrayList<Departamento> listaDepartamentos;
+        
+        try {
+            out.writeObject("ListaDepartamentos");
+            listaDepartamentos = (ArrayList<Departamento>) in.readObject();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            listaDepartamentos = null;
+        } catch (ClassNotFoundException cne) {
+            cne.printStackTrace();
+            listaDepartamentos = null;
+        }
+        return listaDepartamentos;
     }
     
     public void fim() {

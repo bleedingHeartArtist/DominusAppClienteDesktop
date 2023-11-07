@@ -13,6 +13,10 @@ public class Departamento implements Serializable{
         this.nomeDpto = nomeDpto;
     }
 
+    public Departamento(int codDpto) {
+        this.codDpto = codDpto;
+    }
+
     public int getCodDpto() {
         return codDpto;
     }

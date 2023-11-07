@@ -1,16 +1,25 @@
 package view;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import modelDominio.Departamento;
 import modelDominio.Marca;
+import modelDominio.Produto;
+import modelDominio.Vendedor;
+import view.util.ComboboxDepartamento;
 import view.util.ComboboxMarca;
 
 public class FormNovoProduto extends javax.swing.JFrame {
 
     public void preencheComboBox() {
-        ArrayList<Marca> listaMarcas;
-        ArrayList<Departamento> listaDepartamentos;
-        //ComboboxMarca.preencheComboBoxMarca(0, jcbMarca, listaMarcas, rootPaneCheckingEnabled);
+        ArrayList<Marca> listaMarcas = DominusAppCliente.conexaoController.listaMarcas();
+        ArrayList<Departamento> listaDepartamentos = DominusAppCliente.conexaoController.listaDepartamentos();
+        
+        if (listaMarcas != null) 
+            ComboboxMarca.preencheComboBoxMarca(0, jcbMarca, listaMarcas, true);
+        
+        if (listaDepartamentos != null) 
+            ComboboxDepartamento.preencheComboBoxDepartamento(0, jcbDepartamento, listaDepartamentos, true);    
     }
     
     public FormNovoProduto() {
@@ -32,13 +41,13 @@ public class FormNovoProduto extends javax.swing.JFrame {
         jtaDescricao = new javax.swing.JTextArea();
         jlDescricao = new javax.swing.JLabel();
         jlPreco = new javax.swing.JLabel();
-        jtfPreco = new javax.swing.JTextField();
         jbCadastrar = new javax.swing.JButton();
         jbLimpar = new javax.swing.JButton();
         jlAvisoNome = new javax.swing.JLabel();
         jlAvisoMarca = new javax.swing.JLabel();
         jlAvisoDepartamento = new javax.swing.JLabel();
         jlAvisoPreco = new javax.swing.JLabel();
+        jftfPreco = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Novo Produto");
@@ -95,13 +104,15 @@ public class FormNovoProduto extends javax.swing.JFrame {
         jlAvisoPreco.setForeground(new java.awt.Color(255, 0, 0));
         jlAvisoPreco.setText("Informe o preco!");
 
+        jftfPreco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlMarca)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -114,25 +125,24 @@ public class FormNovoProduto extends javax.swing.JFrame {
                         .addComponent(jlDepartamento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlAvisoDepartamento))
-                    .addComponent(jtfNome)
-                    .addComponent(jcbMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jcbDepartamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jtfNome, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jcbMarca, javax.swing.GroupLayout.Alignment.LEADING, 0, 187, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jcbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jspDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlDescricao)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jlPreco)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlAvisoPreco))
-                    .addComponent(jtfPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jftfPreco, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jlPreco)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jlAvisoPreco))))
                 .addGap(24, 24, 24))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbLimpar)
-                .addGap(39, 39, 39)
-                .addComponent(jbCadastrar)
-                .addGap(194, 194, 194))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,11 +172,11 @@ public class FormNovoProduto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                    .addComponent(jftfPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbCadastrar)
-                    .addComponent(jbLimpar))
+                    .addComponent(jbCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41))
         );
 
@@ -194,7 +204,7 @@ public class FormNovoProduto extends javax.swing.JFrame {
             jcbDepartamento.requestFocus();
             return;
         }
-        if (jtfPreco.getText().equals("")) {
+        if (jftfPreco.getText().equals("")) {
             jlAvisoPreco.setVisible(true);
             jlAvisoPreco.requestFocus();
             return;
@@ -203,6 +213,22 @@ public class FormNovoProduto extends javax.swing.JFrame {
         limpaAvisos();
         
         String nome = jtfNome.getText();
+        String descricao = jtaDescricao.getText();
+        float preco = ((Number)jftfPreco.getValue()).floatValue();
+        Marca marcaProduto = new Marca(ComboboxMarca.getSelectedIndex(jcbMarca));
+        Departamento dptoProduto = new Departamento(ComboboxDepartamento.getSelectedIndex(jcbDepartamento));
+        Vendedor vendedorProduto = (Vendedor)DominusAppCliente.conexaoController.getUsuario();
+        
+        Produto novoProduto = new Produto(nome, descricao, preco, marcaProduto, dptoProduto, vendedorProduto);
+        
+        if (DominusAppCliente.conexaoController.produtoInserir(novoProduto)) {
+            JOptionPane.showMessageDialog(rootPane, "Produto cadastrado com sucesso!", "Cadastro de produto", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            limpaCampos();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar produto.", "Cadastro de produto",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
   
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
@@ -216,7 +242,7 @@ public class FormNovoProduto extends javax.swing.JFrame {
     public void limpaCampos() {
         jtaDescricao.setText("");
         jtfNome.setText("");
-        jtfPreco.setText("");
+        jftfPreco.setText("");
         jcbMarca.setSelectedIndex(0);
         jcbDepartamento.setSelectedIndex(0);
     }
@@ -226,6 +252,7 @@ public class FormNovoProduto extends javax.swing.JFrame {
     private javax.swing.JButton jbLimpar;
     private javax.swing.JComboBox<String> jcbDepartamento;
     private javax.swing.JComboBox<String> jcbMarca;
+    private javax.swing.JFormattedTextField jftfPreco;
     private javax.swing.JLabel jlAvisoDepartamento;
     private javax.swing.JLabel jlAvisoMarca;
     private javax.swing.JLabel jlAvisoNome;
@@ -238,6 +265,5 @@ public class FormNovoProduto extends javax.swing.JFrame {
     private javax.swing.JScrollPane jspDescricao;
     private javax.swing.JTextArea jtaDescricao;
     private javax.swing.JTextField jtfNome;
-    private javax.swing.JTextField jtfPreco;
     // End of variables declaration//GEN-END:variables
 }

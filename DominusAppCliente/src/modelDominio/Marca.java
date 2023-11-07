@@ -13,6 +13,10 @@ public class Marca implements Serializable{
         this.nomeMarca = nomeMarca;
     }
 
+    public Marca(int codMarca) {
+        this.codMarca = codMarca;
+    }
+
     public int getCodMarca() {
         return codMarca;
     }

@@ -1,15 +1,17 @@
 package view;
 
 import java.util.ArrayList;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import modelDominio.Departamento;
 import modelDominio.Marca;
 import modelDominio.Produto;
+import modelDominio.Usuario;
 import modelDominio.Vendedor;
 import view.util.ComboboxDepartamento;
 import view.util.ComboboxMarca;
 
-public class FormNovoProduto extends javax.swing.JFrame {
+public class FormNovoProduto extends JDialog {
 
     public void preencheComboBox() {
         ArrayList<Marca> listaMarcas = DominusAppCliente.conexaoController.listaMarcas();
@@ -26,6 +28,7 @@ public class FormNovoProduto extends javax.swing.JFrame {
         initComponents();
         limpaAvisos();
         preencheComboBox();
+        setModal(true);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -217,7 +220,7 @@ public class FormNovoProduto extends javax.swing.JFrame {
         float preco = ((Number)jftfPreco.getValue()).floatValue();
         Marca marcaProduto = new Marca(ComboboxMarca.getSelectedIndex(jcbMarca));
         Departamento dptoProduto = new Departamento(ComboboxDepartamento.getSelectedIndex(jcbDepartamento));
-        Vendedor vendedorProduto = (Vendedor)DominusAppCliente.conexaoController.getUsuario();
+        Vendedor vendedorProduto = new Vendedor(DominusAppCliente.conexaoController.getUsuario().getCodUsuario());
         
         Produto novoProduto = new Produto(nome, descricao, preco, marcaProduto, dptoProduto, vendedorProduto);
         

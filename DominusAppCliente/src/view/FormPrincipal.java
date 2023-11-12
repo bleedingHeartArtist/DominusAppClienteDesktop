@@ -1,8 +1,11 @@
 package view;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import modelDominio.ItensVenda;
 import modelDominio.Venda;
 import view.util.ItensVendaTableModel;
@@ -33,6 +36,23 @@ public class FormPrincipal extends javax.swing.JFrame {
             
     public FormPrincipal() {
         initComponents();
+        getContentPane().setBackground(new Color(40,45,51));
+        
+        jtVendas.getTableHeader().setOpaque(false);
+        jtVendas.getTableHeader().setBackground(new Color(230,142,132));
+        jtVendas.getTableHeader().setForeground(new Color(25,30,33));
+        jtVendas.getTableHeader().setBorder(BorderFactory.createLineBorder(new Color(40,45,51)));
+        
+        jtItensVenda.getTableHeader().setOpaque(false);
+        jtItensVenda.getTableHeader().setBackground(new Color(230,142,132));
+        jtItensVenda.getTableHeader().setForeground(new Color(25,30,33));
+        jtItensVenda.getTableHeader().setBorder(BorderFactory.createLineBorder(new Color(40,45,51)));        
+        
+        jScrollPane1.getViewport().setBackground(new Color(25,30,33));
+        jScrollPane1.setBorder(BorderFactory.createEmptyBorder());
+        jScrollPane2.getViewport().setBackground(new Color(25,30,33));
+        jScrollPane2.setBorder(BorderFactory.createEmptyBorder());
+        
         atualizaTabelaVendas();
         
         timerAtualizaTabela = new Timer();
@@ -41,7 +61,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             public void run() {
                 atualizaTabelaVendas();    
             }
-        }, 5000, 10000);
+        }, 15000, 15000); 
     }
 
   
@@ -62,18 +82,31 @@ public class FormPrincipal extends javax.swing.JFrame {
         jlItensVenda = new javax.swing.JLabel();
         jtfValorTotal = new javax.swing.JTextField();
         jlValorTotal = new javax.swing.JLabel();
+        jlCabecalhoVendas = new javax.swing.JLabel();
         jbProdutos = new javax.swing.JButton();
         jbMarcas = new javax.swing.JButton();
         jbClientes = new javax.swing.JButton();
-        jlCabecalhoVendas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Início");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
 
+        jpVendas.setBackground(new Color(40,45,51));
+        jpVendas.setForeground(new Color(40,45,51));
+        jpVendas.setOpaque(false);
+
+        jScrollPane1.setBackground(new Color(40,45,51));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setForeground(new Color(40,45,51));
+        jScrollPane1.setColumnHeaderView(null);
+        jScrollPane1.setRowHeaderView(null);
+
+        jtVendas.setBackground(new Color(25,30,33));
+        jtVendas.setForeground(new Color(221,221,221));
         jtVendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -85,6 +118,11 @@ public class FormPrincipal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        jtVendas.setGridColor(new Color(40,45,51));
+        jtVendas.setOpaque(false);
+        jtVendas.setSelectionBackground(new Color(40,45,51));
+        jtVendas.setSelectionForeground(new Color(221,221,221));
+        jtVendas.setShowGrid(false);
         jtVendas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtVendasMouseClicked(evt);
@@ -107,12 +145,29 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jpDetalhes.setBackground(new java.awt.Color(40, 45, 51));
+        jpDetalhes.setForeground(new java.awt.Color(40, 45, 51));
+
+        jlCodigoVenda.setBackground(new java.awt.Color(221, 221, 221));
+        jlCodigoVenda.setForeground(new Color(221,221,221));
         jlCodigoVenda.setText("Código");
 
+        jLabel1.setBackground(new java.awt.Color(221, 221, 221));
+        jLabel1.setForeground(new Color(221,221,221));
         jLabel1.setText("Cliente");
 
         jtfCliente.setEditable(false);
+        jtfCliente.setBackground(new java.awt.Color(25, 30, 33));
+        jtfCliente.setForeground(new Color(221,221,221));
+        jtfCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
 
+        jScrollPane2.setBackground(new Color(40,45,51));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setForeground(new Color(40,45,51));
+        jScrollPane2.setRowHeaderView(null);
+
+        jtItensVenda.setBackground(new Color(25,30,33));
+        jtItensVenda.setForeground(new Color(221,221,221));
         jtItensVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -124,15 +179,35 @@ public class FormPrincipal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
+        jtItensVenda.setGridColor(new Color(40,45,51));
+        jtItensVenda.setOpaque(false);
+        jtItensVenda.setSelectionBackground(new Color(40,45,51));
+        jtItensVenda.setSelectionForeground(new Color(221,221,221));
+        jtItensVenda.setShowGrid(false);
         jScrollPane2.setViewportView(jtItensVenda);
 
         jtfCodigoVenda.setEditable(false);
+        jtfCodigoVenda.setBackground(new java.awt.Color(25, 30, 33));
+        jtfCodigoVenda.setForeground(new Color(221,221,221));
+        jtfCodigoVenda.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
 
+        jlItensVenda.setBackground(new java.awt.Color(221, 221, 221));
+        jlItensVenda.setForeground(new Color(221,221,221));
         jlItensVenda.setText("Itens");
 
         jtfValorTotal.setEditable(false);
+        jtfValorTotal.setBackground(new java.awt.Color(25, 30, 33));
+        jtfValorTotal.setForeground(new Color(221,221,221));
+        jtfValorTotal.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
 
+        jlValorTotal.setBackground(new java.awt.Color(221, 221, 221));
+        jlValorTotal.setForeground(new Color(221,221,221));
         jlValorTotal.setText("Valor total");
+
+        jlCabecalhoVendas.setBackground(new java.awt.Color(221, 221, 221));
+        jlCabecalhoVendas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlCabecalhoVendas.setForeground(new Color(221,221,221));
+        jlCabecalhoVendas.setText("Detalhamento de vendas:");
 
         javax.swing.GroupLayout jpDetalhesLayout = new javax.swing.GroupLayout(jpDetalhes);
         jpDetalhes.setLayout(jpDetalhesLayout);
@@ -149,43 +224,56 @@ public class FormPrincipal extends javax.swing.JFrame {
                         .addComponent(jtfCliente)
                         .addComponent(jlItensVenda)
                         .addComponent(jtfValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
-                    .addComponent(jlValorTotal))
+                    .addComponent(jlValorTotal)
+                    .addComponent(jlCabecalhoVendas))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
         jpDetalhesLayout.setVerticalGroup(
             jpDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpDetalhesLayout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(jlCabecalhoVendas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jlCodigoVenda)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtfCodigoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jlItensVenda)
-                .addGap(5, 5, 5)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jlValorTotal)
-                .addGap(4, 4, 4)
-                .addComponent(jtfValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtfValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jbProdutos.setBackground(new java.awt.Color(230, 142, 132));
         jbProdutos.setText("Produtos");
+        jbProdutos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jbProdutos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbProdutosActionPerformed(evt);
             }
         });
 
+        jbMarcas.setBackground(new java.awt.Color(230, 142, 132));
         jbMarcas.setText("Marcas");
+        jbMarcas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jbMarcas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jbClientes.setBackground(new java.awt.Color(230, 142, 132));
         jbClientes.setText("Clientes");
-
-        jlCabecalhoVendas.setText("Detalhamento de vendas:");
+        jbClientes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jbClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbClientesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,35 +282,30 @@ public class FormPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbProdutos)
-                        .addGap(33, 33, 33)
-                        .addComponent(jbMarcas)
-                        .addGap(28, 28, 28)
-                        .addComponent(jbClientes)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlCabecalhoVendas)
-                    .addComponent(jpDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jpVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jpDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(8, 8, 8))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbProdutos)
-                            .addComponent(jbMarcas)
-                            .addComponent(jbClientes)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jlCabecalhoVendas)))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jpDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -249,6 +332,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         FormProdutos formProdutos = new FormProdutos();
         formProdutos.setVisible(true);
     }//GEN-LAST:event_jbProdutosActionPerformed
+
+    private void jbClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbClientesActionPerformed
+        FormClientes formCli = new FormClientes();
+        formCli.setVisible(true);
+    }//GEN-LAST:event_jbClientesActionPerformed
 
     public void limpaCampos() {
         jtfCodigoVenda.setText("");

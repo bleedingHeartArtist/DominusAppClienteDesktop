@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -10,8 +11,8 @@ public class FormCadastroUsuario extends javax.swing.JFrame {
 
     public FormCadastroUsuario() {
         initComponents();
+        getContentPane().setBackground(new Color(40,45,51));
         limpaAvisos();
-        //this.getContentPane().setBackground(new java.awt.Color(1,12,35));
     }
 
     @SuppressWarnings("unchecked")
@@ -40,27 +41,61 @@ public class FormCadastroUsuario extends javax.swing.JFrame {
         setTitle("Cadastro");
         setBackground(new java.awt.Color(1, 0, 77));
 
+        jlNome.setBackground(new java.awt.Color(221, 221, 221));
+        jlNome.setForeground(new Color(221,221,221));
         jlNome.setText("Nome");
 
+        jtfNome.setBackground(new java.awt.Color(25, 30, 33));
+        jtfNome.setForeground(new Color(221,221,221));
+        jtfNome.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+
+        jlLogin.setBackground(new java.awt.Color(221, 221, 221));
+        jlLogin.setForeground(new Color(221,221,221));
         jlLogin.setText("Login");
 
+        jtfLogin.setBackground(new java.awt.Color(25, 30, 33));
+        jtfLogin.setForeground(new Color(221,221,221));
+        jtfLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+
+        jlEndereco.setBackground(new java.awt.Color(221, 221, 221));
+        jlEndereco.setForeground(new Color(221,221,221));
         jlEndereco.setText("Endereço");
 
+        jtfEndereco.setBackground(new java.awt.Color(25, 30, 33));
+        jtfEndereco.setForeground(new Color(221,221,221));
+        jtfEndereco.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+
+        jlCnpj.setBackground(new java.awt.Color(221, 221, 221));
+        jlCnpj.setForeground(new Color(221,221,221));
         jlCnpj.setText("CNPJ");
 
+        jtfCnpj.setBackground(new java.awt.Color(25, 30, 33));
+        jtfCnpj.setForeground(new Color(221,221,221));
+        jtfCnpj.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+
+        jpfSenha.setBackground(new java.awt.Color(25, 30, 33));
+        jpfSenha.setForeground(new Color(221,221,221));
+        jpfSenha.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+
+        jlSenha.setBackground(new java.awt.Color(221, 221, 221));
+        jlSenha.setForeground(new Color(221,221,221));
         jlSenha.setText("Senha");
 
-        jbCadastrar.setBackground(new java.awt.Color(134, 0, 201));
+        jbCadastrar.setBackground(new java.awt.Color(230, 142, 132));
         jbCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jbCadastrar.setText("Cadastrar");
-        jbCadastrar.setBorder(null);
+        jbCadastrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jbCadastrar.setOpaque(true);
         jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCadastrarActionPerformed(evt);
             }
         });
 
+        jbLimpar.setBackground(new java.awt.Color(40, 45, 51));
+        jbLimpar.setForeground(new Color(221,221,221));
         jbLimpar.setText("Limpar");
+        jbLimpar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 142, 132), 2, true));
         jbLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbLimparActionPerformed(evt);
@@ -92,7 +127,7 @@ public class FormCadastroUsuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlEndereco)
@@ -102,37 +137,37 @@ public class FormCadastroUsuario extends javax.swing.JFrame {
                         .addComponent(jlLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlAvisoLogin))
-                    .addComponent(jtfNome, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlAvisoNome))
+                    .addComponent(jtfNome, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                     .addComponent(jtfLogin)
                     .addComponent(jtfEndereco))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlCnpj)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlAvisoCnpj))
-                    .addComponent(jtfCnpj, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                    .addComponent(jtfCnpj, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlSenha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlAvisoSenha))
                     .addComponent(jpfSenha))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(151, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(152, 152, 152))
+                .addGap(137, 137, 137))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -170,7 +205,7 @@ public class FormCadastroUsuario extends javax.swing.JFrame {
                 .addComponent(jbCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();

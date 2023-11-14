@@ -123,6 +123,23 @@ public class ConexaoController {
         return resultado;
     }
     
+    public boolean produtoExcluir(Produto produto) {
+        boolean resultado;
+        
+        try {
+            out.writeObject("ProdutoExcluir");
+            String msg = (String)in.readObject();
+            out.writeObject(produto);
+            resultado = (boolean)in.readObject();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            resultado = false;
+        } catch (ClassNotFoundException cne) {
+            cne.printStackTrace();
+            resultado = false;
+        }
+        return resultado;
+    }
     //------------MARCA---------------//
     
     public ArrayList<Marca> listaMarcas() {

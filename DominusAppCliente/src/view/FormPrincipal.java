@@ -33,26 +33,28 @@ public class FormPrincipal extends javax.swing.JFrame {
             jtItensVenda.setModel(itensVendaModel);
         }
     }
+    
+    public void designTabelas() {
+        jtVendas.getTableHeader().setOpaque(false);
+        jtVendas.getTableHeader().setBackground(new Color(230,142,132));
+        jtVendas.getTableHeader().setForeground(new Color(25,30,33));
+        jtVendas.getTableHeader().setBorder(BorderFactory.createLineBorder(new Color(40,45,51)));
+        jScrollPane1.getViewport().setBackground(new Color(25,30,33));
+        jScrollPane1.setBorder(BorderFactory.createEmptyBorder());
+        
+        jtItensVenda.getTableHeader().setOpaque(false);
+        jtItensVenda.getTableHeader().setBackground(new Color(230,142,132));
+        jtItensVenda.getTableHeader().setForeground(new Color(25,30,33));
+        jtItensVenda.getTableHeader().setBorder(BorderFactory.createLineBorder(new Color(40,45,51)));
+        jScrollPane2.getViewport().setBackground(new Color(25,30,33));
+        jScrollPane2.setBorder(BorderFactory.createEmptyBorder());    
+    }
             
     public FormPrincipal() {
         initComponents();
         getContentPane().setBackground(new Color(40,45,51));
         
-        jtVendas.getTableHeader().setOpaque(false);
-        jtVendas.getTableHeader().setBackground(new Color(230,142,132));
-        jtVendas.getTableHeader().setForeground(new Color(25,30,33));
-        jtVendas.getTableHeader().setBorder(BorderFactory.createLineBorder(new Color(40,45,51)));
-        
-        jtItensVenda.getTableHeader().setOpaque(false);
-        jtItensVenda.getTableHeader().setBackground(new Color(230,142,132));
-        jtItensVenda.getTableHeader().setForeground(new Color(25,30,33));
-        jtItensVenda.getTableHeader().setBorder(BorderFactory.createLineBorder(new Color(40,45,51)));        
-        
-        jScrollPane1.getViewport().setBackground(new Color(25,30,33));
-        jScrollPane1.setBorder(BorderFactory.createEmptyBorder());
-        jScrollPane2.getViewport().setBackground(new Color(25,30,33));
-        jScrollPane2.setBorder(BorderFactory.createEmptyBorder());
-        
+        designTabelas();
         atualizaTabelaVendas();
         
         timerAtualizaTabela = new Timer();
@@ -63,7 +65,6 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         }, 15000, 15000); 
     }
-
   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

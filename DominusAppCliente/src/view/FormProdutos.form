@@ -235,7 +235,11 @@
         <Component class="javax.swing.JButton" name="btnRemoverProduto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Remover"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoverProdutoActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <Properties>

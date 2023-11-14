@@ -1,6 +1,7 @@
 package view;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import modelDominio.Produto;
 import view.util.ProdutoTableModel;
 
@@ -14,28 +15,16 @@ public class FormProdutos extends javax.swing.JFrame {
             produtoTableModel = new ProdutoTableModel(listaProdutos);
             jtMeusProdutos.setModel(produtoTableModel);
         }
+        
+        if (jtMeusProdutos.getSelectedRow() != -1) 
+            btnRemoverProduto.setEnabled(true);  
     }
     
     public FormProdutos() {
         initComponents();
         
-        atualizaTabelaProdutos();
-        /*jtfCodProduto.setText(String.valueOf(bk.getCodProduto()));
-        jtfDescricao.setText(bk.getDescricao());
-        jtfDptoCadastro.setText(bk.getDepartamentoNome());
-        jtfMarca.setText(bk.getMarcaNome());
-        jtfNome.setText(bk.getNome());
-        jtfPreco.setText(bk.getPrecoString());*/
-        
+        atualizaTabelaProdutos();  
     }
-    
-   // private void preencheComboboxDpto(){
-       
-        
-        
-//}
-        
-    //}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -117,6 +106,12 @@ public class FormProdutos extends javax.swing.JFrame {
         });
 
         btnRemoverProduto.setText("Remover");
+        btnRemoverProduto.setEnabled(false);
+        btnRemoverProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverProdutoActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -219,7 +214,10 @@ public class FormProdutos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtMeusProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtMeusProdutosMouseClicked
-        // TODO add your handling code here:
+        if (jtMeusProdutos.getSelectedRow() == -1) 
+            return;
+        
+        btnRemoverProduto.setEnabled(true);
         Produto produtoSelecionado = produtoTableModel.getProduto(jtMeusProdutos.getSelectedRow());
         
         jtfCodProduto.setText(String.valueOf(produtoSelecionado.getCodProduto()));
@@ -236,8 +234,29 @@ public class FormProdutos extends javax.swing.JFrame {
         atualizaTabelaProdutos();        
     }//GEN-LAST:event_jbNovoProdutoActionPerformed
 
-   
-    
+    private void btnRemoverProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverProdutoActionPerformed
+        if (jtMeusProdutos.getSelectedRow() == -1) {
+            return;
+        }
+        
+        if (JOptionPane.showConfirmDialog(this, "Tem certeza de que deseja excluir o produto: "+
+               "?", this.getTitle(), JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE)
+                == JOptionPane.YES_OPTION) {
+            
+           Produto produtoSel = produtoTableModel.getProduto(jtMeusProdutos.getSelectedRow());
+           boolean resultado = DominusAppCliente.conexaoController.produtoExcluir(produtoSel);
+           
+            if (resultado) {
+                JOptionPane.showMessageDialog(this, "Produto excluído com sucesso.", 
+                        this.getTitle(), JOptionPane.INFORMATION_MESSAGE);
+                atualizaTabelaProdutos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao excluir produto.", 
+                        this.getTitle(), JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnRemoverProdutoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRemoverProduto;

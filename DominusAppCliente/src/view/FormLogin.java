@@ -6,15 +6,15 @@ import modelDominio.Usuario;
 
 public class FormLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormLogin
-     */
+    public void limpaAvisos() {
+        jlAvisoLogin.setVisible(false);
+        jlAvisoSenha.setVisible(false);
+        jlAviso.setVisible(false);
+    }
     public FormLogin() {
         initComponents();
         getContentPane().setBackground(new Color(40,45,51));
-        jlAviso.setVisible(false);
-        jlAvisoLogin.setVisible(false);
-        jlAvisoSenha.setVisible(false);
+        limpaAvisos();
     }
  
     @SuppressWarnings("unchecked")
@@ -71,6 +71,7 @@ public class FormLogin extends javax.swing.JFrame {
         jtfLogin.setBackground(new java.awt.Color(25, 30, 33));
         jtfLogin.setForeground(new Color(221,221,221));
         jtfLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+        jtfLogin.setCaretColor(new Color(221,221,221));
 
         jlLogin.setBackground(new java.awt.Color(221, 221, 221));
         jlLogin.setForeground(new Color(221,221,221));
@@ -81,7 +82,10 @@ public class FormLogin extends javax.swing.JFrame {
         jlSenha.setText("Senha");
 
         jpfSenha.setBackground(new java.awt.Color(25, 30, 33));
+        jpfSenha.setForeground(new Color(221,221,221));
         jpfSenha.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+        jpfSenha.setCaretColor(new Color(221,221,221));
+        jpfSenha.setDisabledTextColor(new Color(221,221,221));
 
         jlAvisoLogin.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jlAvisoLogin.setForeground(new java.awt.Color(255, 0, 0));
@@ -159,19 +163,18 @@ public class FormLogin extends javax.swing.JFrame {
     private void jbEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntrarActionPerformed
         // TODO add your handling code here:
         if (jtfLogin.getText().equals("")) {
+            limpaAvisos();
             jlAvisoLogin.setVisible(true);
             jtfLogin.requestFocus();
             return;
-        }
-        
-        if (jpfSenha.getPassword().equals("")) {
+        } else if (jpfSenha.getText().equals("")) {
+           limpaAvisos();
            jlAvisoSenha.setVisible(true);
            jpfSenha.requestFocus();
            return;
         }
         
-        jlAvisoLogin.setVisible(false);
-        jlAvisoSenha.setVisible(false);
+        limpaAvisos();
         
         String senha = jpfSenha.getText();
         Usuario usuario = new Usuario(jtfLogin.getText(), senha);
@@ -189,13 +192,11 @@ public class FormLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jbEntrarActionPerformed
 
     private void jbCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastroActionPerformed
-        // TODO add your handling code here:
         FormCadastroUsuario formCadastroUsuario = new FormCadastroUsuario();
         formCadastroUsuario.setVisible(true);
     }//GEN-LAST:event_jbCadastroActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
         DominusAppCliente.conexaoController.fim();
     }//GEN-LAST:event_formWindowClosing
 

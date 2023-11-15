@@ -1,6 +1,8 @@
 package view;
 
+import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import modelDominio.Produto;
 import view.util.ProdutoTableModel;
@@ -10,18 +12,45 @@ public class FormProdutos extends javax.swing.JFrame {
     
     public void atualizaTabelaProdutos() {
         ArrayList<Produto> listaProdutos = DominusAppCliente.conexaoController.listaProdutos();
+        int linhaSel = jtMeusProdutos.getSelectedRow();
         
         if (listaProdutos != null) {
             produtoTableModel = new ProdutoTableModel(listaProdutos);
             jtMeusProdutos.setModel(produtoTableModel);
         }
-        
-        if (jtMeusProdutos.getSelectedRow() != -1) 
-            btnRemoverProduto.setEnabled(true);  
+        if (linhaSel < jtMeusProdutos.getRowCount() && linhaSel != -1) {
+            jtMeusProdutos.setRowSelectionInterval(linhaSel, linhaSel);
+            jtMeusProdutosMouseClicked(null);
+        }
+        if (jtMeusProdutos.getSelectedRow() == -1) {
+            btnRemoverProduto.setEnabled(false);  
+            limpaCampos();
+        }
+    }
+    
+    public void designTabela() {
+        jtMeusProdutos.getTableHeader().setOpaque(false);
+        jtMeusProdutos.getTableHeader().setBackground(new Color(230,142,132));
+        jtMeusProdutos.getTableHeader().setForeground(new Color(25,30,33));
+        jtMeusProdutos.getTableHeader().setBorder(BorderFactory.createLineBorder(new Color(40,45,51)));
+        jScrollPane1.getViewport().setBackground(new Color(25,30,33));
+        jScrollPane1.setBorder(BorderFactory.createEmptyBorder());
+        jtMeusProdutos.setRowSelectionInterval(0, 0);
+    }
+    
+    public void limpaCampos() {
+        jtfNome.setText("");
+        jtfCodProduto.setText("");
+        jtfDpto.setText("");
+        jtfPreco.setText("");
+        jtfMarca.setText("");
+        jtaDescricao.setText("");
     }
     
     public FormProdutos() {
-        initComponents();
+        initComponents();     
+        getContentPane().setBackground(new Color(40,45,51));
+        designTabela();
         
         atualizaTabelaProdutos();  
     }
@@ -58,6 +87,8 @@ public class FormProdutos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Produtos");
 
+        jtMeusProdutos.setBackground(new Color(25,30,33));
+        jtMeusProdutos.setForeground(new Color(221,221,221));
         jtMeusProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -69,6 +100,10 @@ public class FormProdutos extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtMeusProdutos.setOpaque(false);
+        jtMeusProdutos.setSelectionBackground(new Color(40,45,51));
+        jtMeusProdutos.setSelectionForeground(new Color(221,221,221));
+        jtMeusProdutos.setShowGrid(false);
         jtMeusProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtMeusProdutosMouseClicked(evt);
@@ -76,36 +111,73 @@ public class FormProdutos extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtMeusProdutos);
 
-        jtfNome.setEditable(false);
+        jPanel4.setBackground(new Color(40,45,51));
+        jPanel4.setForeground(new Color(40,45,51));
 
+        jtfNome.setEditable(false);
+        jtfNome.setBackground(new java.awt.Color(25, 30, 33));
+        jtfNome.setForeground(new Color(221,221,221));
+        jtfNome.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+
+        jlblCodigo.setBackground(new Color(221,221,221));
+        jlblCodigo.setForeground(new Color(221,221,221));
         jlblCodigo.setText("Código");
 
-        jLabel3.setText("Nome:");
+        jLabel3.setBackground(new Color(221,221,221));
+        jLabel3.setForeground(new Color(221,221,221));
+        jLabel3.setText("Nome");
 
         jtfPreco.setEditable(false);
+        jtfPreco.setBackground(new java.awt.Color(25, 30, 33));
+        jtfPreco.setForeground(new Color(221,221,221));
+        jtfPreco.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
 
+        jLabel9.setBackground(new Color(221,221,221));
+        jLabel9.setForeground(new Color(221,221,221));
         jLabel9.setText("Preço");
 
         jtfCodProduto.setEditable(false);
+        jtfCodProduto.setBackground(new java.awt.Color(25, 30, 33));
+        jtfCodProduto.setForeground(new Color(221,221,221));
+        jtfCodProduto.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
 
         jtfMarca.setEditable(false);
+        jtfMarca.setBackground(new java.awt.Color(25, 30, 33));
+        jtfMarca.setForeground(new Color(221,221,221));
+        jtfMarca.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
 
+        jLabel6.setBackground(new Color(221,221,221));
+        jLabel6.setForeground(new Color(221,221,221));
         jLabel6.setText("Marca");
 
+        jLabel10.setBackground(new Color(221,221,221));
+        jLabel10.setForeground(new Color(221,221,221));
         jLabel10.setText("Descrição");
 
         jtfDpto.setEditable(false);
+        jtfDpto.setBackground(new java.awt.Color(25, 30, 33));
+        jtfDpto.setForeground(new Color(221,221,221));
+        jtfDpto.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
 
+        jLabel5.setBackground(new Color(221,221,221));
+        jLabel5.setForeground(new Color(221,221,221));
         jLabel5.setText("Departamento");
 
+        jbNovoProduto.setBackground(new java.awt.Color(230, 142, 132));
         jbNovoProduto.setText("Novo");
+        jbNovoProduto.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jbNovoProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbNovoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbNovoProdutoActionPerformed(evt);
             }
         });
 
+        btnRemoverProduto.setBackground(new java.awt.Color(40, 45, 51));
+        btnRemoverProduto.setForeground(new Color(221,221,221));
         btnRemoverProduto.setText("Remover");
+        btnRemoverProduto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 142, 132), 2, true));
+        btnRemoverProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRemoverProduto.setEnabled(false);
         btnRemoverProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,13 +185,18 @@ public class FormProdutos extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane2.setBackground(new java.awt.Color(25, 30, 33));
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jtaDescricao.setEditable(false);
+        jtaDescricao.setBackground(new java.awt.Color(25, 30, 33));
         jtaDescricao.setColumns(20);
+        jtaDescricao.setForeground(new Color(221,221,221));
         jtaDescricao.setLineWrap(true);
         jtaDescricao.setRows(5);
         jtaDescricao.setWrapStyleWord(true);
+        jtaDescricao.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
         jScrollPane2.setViewportView(jtaDescricao);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -129,12 +206,13 @@ public class FormProdutos extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(btnRemoverProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnRemoverProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addComponent(jbNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -151,8 +229,7 @@ public class FormProdutos extends javax.swing.JFrame {
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel6)
                                         .addComponent(jtfMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                                        .addComponent(jtfDpto))))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE))
+                                        .addComponent(jtfDpto)))))
                         .addGap(0, 2, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -186,7 +263,7 @@ public class FormProdutos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRemoverProduto)))
+                    .addComponent(btnRemoverProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,6 +293,8 @@ public class FormProdutos extends javax.swing.JFrame {
     private void jtMeusProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtMeusProdutosMouseClicked
         if (jtMeusProdutos.getSelectedRow() == -1) 
             return;
+        if (produtoTableModel == null) 
+            return;
         
         btnRemoverProduto.setEnabled(true);
         Produto produtoSelecionado = produtoTableModel.getProduto(jtMeusProdutos.getSelectedRow());
@@ -235,16 +314,16 @@ public class FormProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_jbNovoProdutoActionPerformed
 
     private void btnRemoverProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverProdutoActionPerformed
-        if (jtMeusProdutos.getSelectedRow() == -1) {
+        int linhaSel = jtMeusProdutos.getSelectedRow();
+        if (linhaSel == -1) 
             return;
-        }
         
         if (JOptionPane.showConfirmDialog(this, "Tem certeza de que deseja excluir o produto: "+
-               "?", this.getTitle(), JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE)
-                == JOptionPane.YES_OPTION) {
+            produtoTableModel.getProduto(linhaSel).getNome()+"?", this.getTitle(), 
+            JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION) {
             
-           Produto produtoSel = produtoTableModel.getProduto(jtMeusProdutos.getSelectedRow());
-           boolean resultado = DominusAppCliente.conexaoController.produtoExcluir(produtoSel);
+            Produto produtoSel = produtoTableModel.getProduto(linhaSel);
+            boolean resultado = DominusAppCliente.conexaoController.produtoExcluir(produtoSel);
            
             if (resultado) {
                 JOptionPane.showMessageDialog(this, "Produto excluído com sucesso.", 

@@ -1,12 +1,12 @@
 package view;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import modelDominio.Departamento;
 import modelDominio.Marca;
 import modelDominio.Produto;
-import modelDominio.Usuario;
 import modelDominio.Vendedor;
 import view.util.ComboboxDepartamento;
 import view.util.ComboboxMarca;
@@ -26,6 +26,8 @@ public class FormNovoProduto extends JDialog {
     
     public FormNovoProduto() {
         initComponents();
+        getContentPane().setBackground(new Color(40,45,51));
+        
         limpaAvisos();
         preencheComboBox();
         setModal(true);
@@ -55,36 +57,70 @@ public class FormNovoProduto extends JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Novo Produto");
 
+        jlNome.setBackground(new Color(221,221,221));
+        jlNome.setForeground(new Color(221,221,221));
         jlNome.setText("Nome");
 
+        jtfNome.setBackground(new java.awt.Color(25, 30, 33));
+        jtfNome.setForeground(new Color(221,221,221));
+        jtfNome.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+        jtfNome.setCaretColor(new Color(221,221,221));
+
+        jlMarca.setBackground(new Color(221,221,221));
+        jlMarca.setForeground(new Color(221,221,221));
         jlMarca.setText("Marca");
 
+        jcbMarca.setBackground(new java.awt.Color(25, 30, 33));
+        jcbMarca.setForeground(new Color(221,221,221));
         jcbMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbMarca.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        jlDepartamento.setBackground(new Color(221,221,221));
+        jlDepartamento.setForeground(new Color(221,221,221));
         jlDepartamento.setText("Departamento");
 
+        jcbDepartamento.setBackground(new java.awt.Color(25, 30, 33));
+        jcbDepartamento.setForeground(new Color(221,221,221));
         jcbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbDepartamento.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        jspDescricao.setBackground(new java.awt.Color(25, 30, 33));
+        jspDescricao.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jspDescricao.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        jtaDescricao.setBackground(new java.awt.Color(25, 30, 33));
         jtaDescricao.setColumns(20);
+        jtaDescricao.setForeground(new Color(221,221,221));
         jtaDescricao.setLineWrap(true);
         jtaDescricao.setRows(5);
         jtaDescricao.setWrapStyleWord(true);
+        jtaDescricao.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+        jtaDescricao.setCaretColor(new Color(221,221,221));
         jspDescricao.setViewportView(jtaDescricao);
 
+        jlDescricao.setBackground(new Color(221,221,221));
+        jlDescricao.setForeground(new Color(221,221,221));
         jlDescricao.setText("Descrição");
 
+        jlPreco.setBackground(new Color(221,221,221));
+        jlPreco.setForeground(new Color(221,221,221));
         jlPreco.setText("Preço");
 
+        jbCadastrar.setBackground(new java.awt.Color(230, 142, 132));
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jbCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCadastrarActionPerformed(evt);
             }
         });
 
+        jbLimpar.setBackground(new java.awt.Color(40, 45, 51));
+        jbLimpar.setForeground(new Color(221,221,221));
         jbLimpar.setText("Limpar");
+        jbLimpar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 142, 132), 2, true));
+        jbLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbLimparActionPerformed(evt);
@@ -105,9 +141,13 @@ public class FormNovoProduto extends JDialog {
 
         jlAvisoPreco.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jlAvisoPreco.setForeground(new java.awt.Color(255, 0, 0));
-        jlAvisoPreco.setText("Informe o preco!");
+        jlAvisoPreco.setText("Informe o preço!");
 
+        jftfPreco.setBackground(new java.awt.Color(25, 30, 33));
+        jftfPreco.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+        jftfPreco.setForeground(new Color(221,221,221));
         jftfPreco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+        jftfPreco.setCaretColor(new Color(221,221,221));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,21 +170,20 @@ public class FormNovoProduto extends JDialog {
                         .addComponent(jlAvisoDepartamento))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jtfNome, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jcbMarca, javax.swing.GroupLayout.Alignment.LEADING, 0, 187, Short.MAX_VALUE))
+                        .addComponent(jcbMarca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jcbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jbCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jspDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jspDescricao)
                     .addComponent(jlDescricao)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jftfPreco, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jlPreco)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jlAvisoPreco))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlPreco)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlAvisoPreco))
+                    .addComponent(jftfPreco))
                 .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
@@ -176,7 +215,7 @@ public class FormNovoProduto extends JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jftfPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -193,21 +232,25 @@ public class FormNovoProduto extends JDialog {
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
         if (jtfNome.getText().equals("")) {
+            limpaAvisos();
             jlAvisoNome.setVisible(true);
             jtfNome.requestFocus();
             return;
         }
         if (jcbMarca.getSelectedIndex() == 0) {
+            limpaAvisos();
             jlAvisoMarca.setVisible(true);
             jcbMarca.requestFocus();
             return;
         }
         if (jcbDepartamento.getSelectedIndex() == 0) {
+            limpaAvisos();
             jlAvisoDepartamento.setVisible(true);
             jcbDepartamento.requestFocus();
             return;
         }
         if (jftfPreco.getText().equals("")) {
+            limpaAvisos();
             jlAvisoPreco.setVisible(true);
             jlAvisoPreco.requestFocus();
             return;

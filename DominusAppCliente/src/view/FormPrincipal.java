@@ -18,11 +18,19 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     public void atualizaTabelaVendas () {
         ArrayList<Venda> listaVendas = DominusAppCliente.conexaoController.listaVendas();
+        int linhaSel = jtVendas.getSelectedRow();
         
         if (listaVendas.get(0) != null) {
             vendaModel = new VendaTableModel(listaVendas);
             jtVendas.setModel(vendaModel);
         } 
+        if (linhaSel < jtVendas.getRowCount() && linhaSel != -1) {
+            jtVendas.setRowSelectionInterval(linhaSel, linhaSel);
+            jtVendasMouseClicked(null);
+        }
+        if (jtVendas.getSelectedRow() == -1) {
+            limpaCampos();
+        }
     }
     
     public void atualizaTabelaItensVenda(Venda vendaSelecionada) {
@@ -39,6 +47,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jtVendas.getTableHeader().setBackground(new Color(230,142,132));
         jtVendas.getTableHeader().setForeground(new Color(25,30,33));
         jtVendas.getTableHeader().setBorder(BorderFactory.createLineBorder(new Color(40,45,51)));
+        jtVendas.setRowSelectionInterval(0, 0);
         jScrollPane1.getViewport().setBackground(new Color(25,30,33));
         jScrollPane1.setBorder(BorderFactory.createEmptyBorder());
         
@@ -53,7 +62,6 @@ public class FormPrincipal extends javax.swing.JFrame {
     public FormPrincipal() {
         initComponents();
         getContentPane().setBackground(new Color(40,45,51));
-        
         designTabelas();
         atualizaTabelaVendas();
         
@@ -208,7 +216,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jlCabecalhoVendas.setBackground(new java.awt.Color(221, 221, 221));
         jlCabecalhoVendas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jlCabecalhoVendas.setForeground(new Color(221,221,221));
-        jlCabecalhoVendas.setText("Detalhamento de vendas:");
+        jlCabecalhoVendas.setText("Detalhamento de vendas");
 
         javax.swing.GroupLayout jpDetalhesLayout = new javax.swing.GroupLayout(jpDetalhes);
         jpDetalhes.setLayout(jpDetalhesLayout);
@@ -319,17 +327,19 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jtVendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtVendasMouseClicked
-        //TODO
+        if (jtVendas.getSelectedRow() == -1) 
+            return;
+        if (vendaModel == null) 
+            return;
+        
         Venda vendaSelecionada = vendaModel.getVenda(jtVendas.getSelectedRow());
         jtfCodigoVenda.setText(String.valueOf(vendaSelecionada.getCodVenda()));
         jtfCliente.setText(vendaSelecionada.getCliente().getNome());
         atualizaTabelaItensVenda(vendaSelecionada);
-        jtfValorTotal.setText(vendaSelecionada.getValorString());
-        
+        jtfValorTotal.setText(vendaSelecionada.getValorString());   
     }//GEN-LAST:event_jtVendasMouseClicked
 
     private void jbProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbProdutosActionPerformed
-        // TODO add your handling code here:
         FormProdutos formProdutos = new FormProdutos();
         formProdutos.setVisible(true);
     }//GEN-LAST:event_jbProdutosActionPerformed

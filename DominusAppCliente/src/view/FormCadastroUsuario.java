@@ -216,19 +216,29 @@ public class FormCadastroUsuario extends javax.swing.JFrame {
         limpaAvisos();
         
         if (jtfNome.getText().equals("")) {
+            limpaAvisos();
             jlAvisoNome.setVisible(true);
+            jtfNome.requestFocus();
             return;
         } else if (jtfLogin.getText().equals("")) {
+            limpaAvisos();
             jlAvisoLogin.setVisible(true);
+            jtfLogin.requestFocus();
             return;
         } else if (jtfEndereco.getText().equals("")) {
+            limpaAvisos();
             jlAvisoEndereco.setVisible(true);
+            jtfEndereco.requestFocus();
             return;
         } else if (jtfCnpj.getText().equals("")) {
+            limpaAvisos();
             jlAvisoCnpj.setVisible(true);
+            jtfCnpj.requestFocus();
             return;
         } else if (jpfSenha.getText().equals("")) {
+            limpaAvisos();
             jlAvisoSenha.setVisible(true);
+            jpfSenha.requestFocus();
             return;
         }
         

@@ -93,7 +93,6 @@ public class FormPrincipal extends javax.swing.JFrame {
         jlValorTotal = new javax.swing.JLabel();
         jlCabecalhoVendas = new javax.swing.JLabel();
         jbProdutos = new javax.swing.JButton();
-        jbMarcas = new javax.swing.JButton();
         jbClientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -269,11 +268,6 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbMarcas.setBackground(new java.awt.Color(230, 142, 132));
-        jbMarcas.setText("Marcas");
-        jbMarcas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jbMarcas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         jbClientes.setBackground(new java.awt.Color(230, 142, 132));
         jbClientes.setText("Clientes");
         jbClientes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -294,8 +288,6 @@ public class FormPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jbMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jpVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,7 +301,6 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,7 +351,6 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbClientes;
-    private javax.swing.JButton jbMarcas;
     private javax.swing.JButton jbProdutos;
     private javax.swing.JLabel jlCabecalhoVendas;
     private javax.swing.JLabel jlCodigoVenda;

@@ -1,8 +1,12 @@
 package view;
 
 import java.awt.Color;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import modelDominio.Usuario;
+import view.util.Hash;
 
 public class FormLogin extends javax.swing.JFrame {
 
@@ -191,8 +195,22 @@ public class FormLogin extends javax.swing.JFrame {
         }
         
         limpaAvisos();
+        String senha;
         
-        String senha = jpfSenha.getText();
+        try {
+            senha = Hash.encriptar(jpfSenha.getText(), "SHA-256");
+        } catch (NoSuchAlgorithmException nsae) {
+            nsae.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Erro ao efetuar login.",
+                    "Login",JOptionPane.ERROR_MESSAGE);
+            return;
+        } catch (UnsupportedEncodingException unse) {
+            unse.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Erro ao efetuar login.",
+                    "Login",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         Usuario usuario = new Usuario(jtfLogin.getText(), senha);
         Usuario usuarioLogado = DominusAppCliente.conexaoController.efetuarLogin(usuario);
         

@@ -1,11 +1,14 @@
 package view;
 
 import java.awt.Color;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import modelDominio.Vendedor;
+import view.util.Hash;
 
 public class FormCadastroUsuario extends javax.swing.JFrame {
 
@@ -246,7 +249,22 @@ public class FormCadastroUsuario extends javax.swing.JFrame {
         
         String nome = jtfNome.getText();
         String login = jtfLogin.getText();
-        String senha = jpfSenha.getText();
+        
+        String senha;
+        try {
+            senha = Hash.encriptar(jpfSenha.getText(), "SHA-256");
+        } catch (NoSuchAlgorithmException nsae) {
+            nsae.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Erro ao efetuar cadastro.",
+                    "Cadastro",JOptionPane.ERROR_MESSAGE);
+            return;
+        } catch (UnsupportedEncodingException unse) {
+            unse.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Erro ao efetuar cadastro.",
+                    "Cadastro",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         String endereco = jtfEndereco.getText();
         String cnpj = jtfCnpj.getText();
         

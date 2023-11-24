@@ -31,6 +31,7 @@ public class FormLogin extends javax.swing.JFrame {
         jlAvisoLogin = new javax.swing.JLabel();
         jlAvisoSenha = new javax.swing.JLabel();
         jlAviso = new javax.swing.JLabel();
+        jlEsqueceuSenha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -99,6 +100,15 @@ public class FormLogin extends javax.swing.JFrame {
         jlAviso.setForeground(new java.awt.Color(255, 0, 0));
         jlAviso.setText("Login ou senha incorretos.");
 
+        jlEsqueceuSenha.setForeground(new java.awt.Color(255, 204, 0));
+        jlEsqueceuSenha.setText("Esqueceu sua senha?");
+        jlEsqueceuSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlEsqueceuSenha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlEsqueceuSenhaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,6 +139,10 @@ public class FormLogin extends javax.swing.JFrame {
                         .addGap(179, 179, 179)
                         .addComponent(jlAviso)))
                 .addContainerGap(143, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlEsqueceuSenha)
+                .addGap(189, 189, 189))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,6 +163,8 @@ public class FormLogin extends javax.swing.JFrame {
                 .addComponent(jpfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlAviso)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jlEsqueceuSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -200,6 +216,11 @@ public class FormLogin extends javax.swing.JFrame {
         DominusAppCliente.conexaoController.fim();
     }//GEN-LAST:event_formWindowClosing
 
+    private void jlEsqueceuSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEsqueceuSenhaMouseClicked
+        FormRecuperarSenha formRecuperarSenha = new FormRecuperarSenha();
+        formRecuperarSenha.setVisible(true);
+    }//GEN-LAST:event_jlEsqueceuSenhaMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbCadastro;
@@ -207,6 +228,7 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jlAviso;
     private javax.swing.JLabel jlAvisoLogin;
     private javax.swing.JLabel jlAvisoSenha;
+    private javax.swing.JLabel jlEsqueceuSenha;
     private javax.swing.JLabel jlImagem;
     private javax.swing.JLabel jlLogin;
     private javax.swing.JLabel jlSenha;

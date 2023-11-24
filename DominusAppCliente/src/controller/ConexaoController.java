@@ -82,6 +82,42 @@ public class ConexaoController {
         return resultado;
     }
     
+    public int recuperarSenha(String emailDest) {
+        int codRecuperacao;
+
+        try {
+            out.writeObject("RecuperarSenha");
+            String msg = (String) in.readObject();
+            out.writeObject(emailDest);
+            codRecuperacao = (int) in.readObject();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            codRecuperacao = -1;
+        } catch (ClassNotFoundException cne) {
+            cne.printStackTrace();
+            codRecuperacao = -1;
+        }
+        return codRecuperacao;
+    }
+    
+    public boolean alterarSenhaRecup(Usuario usr) {
+        boolean resultado;
+        
+        try {
+            out.writeObject("AlterarSenhaRecup");
+            String msg = (String) in.readObject();
+            out.writeObject(usr);
+            resultado = (boolean) in.readObject();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            resultado = false;
+        } catch (ClassNotFoundException cne) {
+            cne.printStackTrace();
+            resultado = false;
+        }
+        return resultado;
+    }
+    
     //----------------PRODUTO-------------------//
     
     public ArrayList<Produto> listaProdutos(){

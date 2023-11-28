@@ -1,7 +1,10 @@
 package view;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.JOptionPane;
 import modelDominio.Usuario;
+import view.util.Hash;
 
 public class FormAlterarSenhaRecup extends javax.swing.JFrame {
 
@@ -104,6 +107,20 @@ public class FormAlterarSenhaRecup extends javax.swing.JFrame {
         
         String email = jtfEmailUsuario.getText();
         String senha = jpfNovaSenha.getText();
+        
+        try {
+            senha = Hash.encriptar(senha, "SHA-256");
+        } catch (NoSuchAlgorithmException nsae) {
+            nsae.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Erro ao alterar senha.",
+                    "Login",JOptionPane.ERROR_MESSAGE);
+            return;
+        } catch (UnsupportedEncodingException unse) {
+            unse.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Erro ao alterar senha.",
+                    "Login",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         Usuario usr = new Usuario(email, senha);
         
